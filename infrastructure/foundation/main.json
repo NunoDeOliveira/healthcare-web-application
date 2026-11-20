@@ -1,0 +1,122 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.49.2.45890",
+      "templateHash": "5496137520595471312"
+    }
+  },
+  "parameters": {
+    "deployManagementGroup": {
+      "type": "bool",
+      "defaultValue": false,
+      "metadata": {
+        "description": "Deploy management group"
+      }
+    },
+    "managementGroupName": {
+      "type": "string",
+      "defaultValue": "mg-medicore",
+      "metadata": {
+        "description": "Management group name"
+      }
+    }
+  },
+  "resources": [
+    {
+      "condition": "[parameters('deployManagementGroup')]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2025-04-01",
+      "name": "medicore-tenant-deployment",
+      "scope": "/",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "managementGroupName": {
+            "value": "[parameters('managementGroupName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.49.2.45890",
+              "templateHash": "5890783486097542368"
+            }
+          },
+          "parameters": {
+            "managementGroupName": {
+              "type": "string",
+              "metadata": {
+                "description": "Name of the management group"
+              }
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2025-04-01",
+              "name": "medicore-management-groups",
+              "location": "[deployment().location]",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "managementGroupName": {
+                    "value": "[parameters('managementGroupName')]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.49.2.45890",
+                      "templateHash": "5388013761654812639"
+                    }
+                  },
+                  "parameters": {
+                    "managementGroupName": {
+                      "type": "string",
+                      "defaultValue": "mg-medicore",
+                      "metadata": {
+                        "description": "Management group name"
+                      }
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.Management/managementGroups",
+                      "apiVersion": "2021-04-01",
+                      "name": "[parameters('managementGroupName')]",
+                      "properties": {
+                        "displayName": "MediCore Health"
+                      }
+                    }
+                  ],
+                  "outputs": {
+                    "managementGroupId": {
+                      "type": "string",
+                      "value": "[tenantResourceId('Microsoft.Management/managementGroups', parameters('managementGroupName'))]"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
