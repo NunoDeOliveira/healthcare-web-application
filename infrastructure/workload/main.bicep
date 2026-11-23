@@ -20,7 +20,7 @@ param tagResourceGroup object = {
 }
 
 //=======================================//
-// Resource Group Creation
+// Resource group creation
 //=======================================//
 resource resourceGroups 'Microsoft.Resources/resourceGroups@2025-04-01' = [
   for resourceGroupName in resourceGroupNames: {

@@ -58,17 +58,33 @@ Simulate concurrent appointment bookings and collect p95 response times, error r
 
 ## 8. Resources
 
-- Dignitae. AZ-104T00-A Microsoft Knowledge and Skills with Challenge Labs. Training material.<br>
+- Dignitae. AZ-104T00-A Microsoft Knowledge and Skills with Challenge Labs. Training material<br>
 
-- Microsoft. Course AZ-104T00-A: Microsoft Azure Administrator. Microsoft Learn.<br>
+- Microsoft. Course AZ-104T00-A: Microsoft Azure Administrator. Microsoft Learn<br>
 https://learn.microsoft.com/en-us/training/courses/az-104t00
 
-- Microsoft. Training for Administrators. Microsoft Learn.<br> 
+- Microsoft. Training for Administrators. Microsoft Learn<br> 
 https://learn.microsoft.com/en-us/plans/50nrtozg28d354
 
-- Microsoft. Configuración de una aplicación de App Service Microsoft Learn.<br>
+- Microsoft. Basic web application. Architecture Center<br>
+https://learn.microsoft.com/en-us/azure/architecture/web-apps/app-service/architectures/basic-web-app
+
+- Microsoft. Baseline highly available zone-redundant web application. Architecture Center<br>
+https://learn.microsoft.com/en-us/azure/architecture/web-apps/app-service/architectures/baseline-zone-redundant
+
+- Microsoft. Configuración de una aplicación de App Service Microsoft Learn<br>
 https://learn.microsoft.com/en-us/azure/app-service/configure-common
 
-- Microsoft. Secure your Azure App Service deployment Microsoft Learn.<br>
+- Microsoft. Secure your Azure App Service deployment Microsoft Learn<br>
 https://learn.microsoft.com/en-us/azure/app-service/overview-security
+
+- GitHub. azure-quickstart-templates<br>
+https://github.com/Azure/azure-quickstart-templates
+
+- Microsoft. Bicep documentation.<br>
+https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install
+
+- Microsoft. Delete Azure resources at scale using a script. Azure CLI<br>
+https://learn.microsoft.com/en-us/cli/azure/get-started-tutorial-4-delete-resources?view=azure-cli-latest&tabs=bash
+
 
