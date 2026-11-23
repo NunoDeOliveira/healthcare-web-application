@@ -1,6 +1,8 @@
-# Azure Healthcare Web application
+# Azure Healthcare Web Application
 
-**Technologies:** Microsoft Azure · Wireshark · Azure Network Watcher · Azure Monitor · Application Insights · Log Analytics · Bicep · GitHub Actions (CI/CD)
+**Cloud infrastructure**: App Service · Virtual Network · Azure SQL Database
+**Monitoring and analisis**: Azure Monitor · Network Watcher · Log Analytics · Wireshark
+**Automation**: Bicep · Azure CLI · GitHub Actions (CI/CD)
 
 
 ## 1. Project Context
@@ -22,7 +24,16 @@ Booking an appointment involves multiple network connections, protocols, and ser
 
 ## 3. Architecture & Network Flow
 
+![MediCore Health — Azure Architecture](./screenshot/medicore-web.png)
 
+> Design of architecture of MediCore Health in Microsoft Azure
+
+The architecture uses a Virtual Network (VNet) with four separate subnets:
+
+- **appgw-subnet:** Hosts Application Gateway and Web Application Firewall (WAF).
+- **app-int-subnet:** Enables outbound connections from App Service to private resources.
+- **pe-subnet:** Provides private access to App Services, Azure SQL Database, and Key Vault through Private Endpoints.
+- **diag-subnet:** Hosts a Linux VM for network traffic analysis and troubleshooting.
 
 
 ## 4. Deploy code without shut down the service
@@ -47,17 +58,17 @@ Simulate concurrent appointment bookings and collect p95 response times, error r
 
 ## 8. Resources
 
-- Dignitae. AZ-104T00-A Microsoft Knowledge and Skills with Challenge Labs. Training material.
+- Dignitae. AZ-104T00-A Microsoft Knowledge and Skills with Challenge Labs. Training material.<br>
 
-- Microsoft. Course AZ-104T00-A: Microsoft Azure Administrator. Microsoft Learn.
+- Microsoft. Course AZ-104T00-A: Microsoft Azure Administrator. Microsoft Learn.<br>
 https://learn.microsoft.com/en-us/training/courses/az-104t00
 
-- Microsoft. Training for Administrators. Microsoft Learn. 
+- Microsoft. Training for Administrators. Microsoft Learn.<br> 
 https://learn.microsoft.com/en-us/plans/50nrtozg28d354
 
-- Microsoft. Configuración de una aplicación de App Service Microsoft Learn.
+- Microsoft. Configuración de una aplicación de App Service Microsoft Learn.<br>
 https://learn.microsoft.com/en-us/azure/app-service/configure-common
 
-- Microsoft. Secure your Azure App Service deployment Microsoft Learn.
+- Microsoft. Secure your Azure App Service deployment Microsoft Learn.<br>
 https://learn.microsoft.com/en-us/azure/app-service/overview-security
 
