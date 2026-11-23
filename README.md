@@ -24,7 +24,7 @@ Booking an appointment involves multiple network connections, protocols, and ser
 
 ## 3. Architecture & Network Flow
 
-![MediCore Health - Azure Architecture](./screenshot/medicore-web.png)
+![MediCore Health - Azure Architecture](./screenshots/medicore-web.png)
 
 > Design of architecture of MediCore Health in Microsoft Azure
 
