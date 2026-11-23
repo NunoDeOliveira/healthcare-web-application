@@ -1,9 +1,5 @@
 # Azure Healthcare Web Application
 
-**Cloud infrastructure**: App Service · Virtual Network · Azure SQL Database
-**Monitoring and analisis**: Azure Monitor · Network Watcher · Log Analytics · Wireshark
-**Automation**: Bicep · Azure CLI · GitHub Actions (CI/CD)
-
 
 ## 1. Project Context
 
