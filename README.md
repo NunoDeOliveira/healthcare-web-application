@@ -1,5 +1,7 @@
 # Azure Healthcare Web Application
 
+![MediCore Health structure](./screenshots/structure-of-project.png)
+
 
 ## 1. Project Context
 
@@ -20,7 +22,7 @@ Booking an appointment involves multiple network connections, protocols, and ser
 
 ## 3. Architecture & Network Flow
 
-![MediCore Health - Azure Architecture](./screenshots/medicore-web.png)
+![MediCore Health - Azure Architecture](./docs/medicore-web.png)
 
 > Design of architecture of MediCore Health in Microsoft Azure
 
@@ -32,27 +34,73 @@ The architecture uses a Virtual Network (VNet) with four separate subnets:
 - **diag-subnet:** Hosts a Linux VM for network traffic analysis and troubleshooting.
 
 
-## 4. Deploy code without shut down the service
+## 4. Security & End-to-End Communication Analysis
 
-Use GitHub Actions to build, test, and deploy application changes.
+Validate network connectivity and security controls while analyzing an appointment booking transaction from the client to the database.
 
+- Validate network connectivity and security controls while analyzing an appointment booking transaction from the client to the database.
+- Verify DNS resolution, TCP connections, TLS encryption, and HTTP communication.
+- Validate network segmentation, NSG rules, and private connectivity.
+- Test authorized and unauthorized access to protected resources.
+- Verify RBAC permissions, managed identities, and secure access to secrets.
+- Capture network traffic with Wireshark and correlate it with application logs and traces.
+- Reconstruct an end-to-end appointment booking transaction and identify communication dependencies.
 
-## 5. Network Analysis & Troubleshooting
-
-
-
-
-## 6. Simulate high-demand and indentify potential bottlenecks
-
-Simulate concurrent appointment bookings and collect p95 response times, error rates, throughput, resource usage, and database dependency times. Investigate bottlenecks and repeat the test after a corrective change.
-
-
-## 7. 
+Expected results: 
 
 
+## 5. Automated Deployment & Application Updates
+
+Automate infrastructure provisioning and application deployments using Bicep, Python scripts, and GitHub Actions.
+
+- Provision and configure Azure resources using Infrastructure as Code (IaC).
+- Build, test, and deploy application updates through CI/CD pipelines.
+- Deploy a new application version using deployment slots.
+- Validate the update and perform a rollback if necessary.
+
+**Expected results:** Verify that infrastructure deployments are reproducible and application updates do not interrupt the service.
 
 
-## 8. Resources
+## 6. Performance & Availability Testing
+
+Evaluate application performance, scalability, and service availability under controlled workloads and failure scenarios.
+
+- Simulate concurrent appointment bookings.
+- Measure p95 response times, error rates, throughput, and resource utilization.
+- Analyze application and database response times to identify bottlenecks.
+- Evaluate infrastructure scaling and compare performance results.
+- Verify service availability and recovery from controlled interruptions.
+- Validate database restoration and data integrity.
+
+**Expected results:** Verify whether the application meets predefined performance thresholds and demonstrate its ability to recover from service interruptions.
+
+
+## 7. Infrastructure Deployment 
+
+### Prerequisites
+
+- Azure subscription
+- Azure CLI installed
+- Python 3 installed
+- Git installed
+- Azure CLI authentication (`az login`)
+- Required Azure RBAC permissions
+
+### Deployment
+
+```
+python deploy.py
+```
+
+```
+python destroy.py
+```
+
+
+
+
+
+## 8. References
 
 - Dignitae. AZ-104T00-A Microsoft Knowledge and Skills with Challenge Labs. Training material<br>
 
@@ -82,5 +130,10 @@ https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install
 
 - Microsoft. Delete Azure resources at scale using a script. Azure CLI<br>
 https://learn.microsoft.com/en-us/cli/azure/get-started-tutorial-4-delete-resources?view=azure-cli-latest&tabs=bash
+
+
+
+
+
 
 
