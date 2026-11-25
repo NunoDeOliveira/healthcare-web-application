@@ -1,6 +1,6 @@
 # Azure Healthcare Web Application
 
-![MediCore Health structure](./screenshots/structure-of-project.png)
+
 
 
 ## 1. Project Context
@@ -20,7 +20,7 @@ Booking an appointment involves multiple network connections, protocols, and ser
 6. Simulate high-demand periods through load testing, monitor response times and resource usage, and identify potential bottlenecks.
 
 
-## 3. Architecture & Network Flow
+## 3. Architecture of MediCore Health
 
 ![MediCore Health - Azure Architecture](./docs/medicore-web.png)
 
@@ -34,7 +34,45 @@ The architecture uses a Virtual Network (VNet) with four separate subnets:
 - **diag-subnet:** Hosts a Linux VM for network traffic analysis and troubleshooting.
 
 
-## 4. Security & End-to-End Communication Analysis
+## 4. MediCore Health structure
+
+![MediCore Health structure](./screenshots/structure-of-project.png)
+
+~/projects/healthcare-web-application$ tree -L 3
+.
+├── docs
+│   └── medicore-web.png
+├── infrastructure
+│   ├── foundation
+│   │   ├── budgets.bicep
+│   │   ├── budgets.json
+│   │   ├── identities.bicep
+│   │   ├── locks.bicep
+│   │   ├── main.bicep
+│   │   ├── main.json
+│   │   ├── management-groups.bicep
+│   │   ├── policies.bicep
+│   │   ├── rbac.bicep
+│   │   └── tenant.bicep
+│   ├── parameters
+│   │   ├── foundation.bicepparam
+│   │   └── workload.bicepparam
+│   ├── scripts
+│   │   ├── deploy.py
+│   │   └── destroy.py
+│   └── workload
+│       ├── application
+│       ├── main.bicep
+│       ├── monitoring
+│       └── networking
+├── README.md
+├── screenshots
+│   └── structure-of-project.png
+└── web-app
+
+
+
+## 5. Security & End-to-End Communication Analysis
 
 Validate network connectivity and security controls while analyzing an appointment booking transaction from the client to the database.
 
@@ -49,7 +87,7 @@ Validate network connectivity and security controls while analyzing an appointme
 Expected results: 
 
 
-## 5. Automated Deployment & Application Updates
+## 6. Automated Deployment & Application Updates
 
 Automate infrastructure provisioning and application deployments using Bicep, Python scripts, and GitHub Actions.
 
@@ -61,7 +99,7 @@ Automate infrastructure provisioning and application deployments using Bicep, Py
 **Expected results:** Verify that infrastructure deployments are reproducible and application updates do not interrupt the service.
 
 
-## 6. Performance & Availability Testing
+## 7. Performance & Availability Testing
 
 Evaluate application performance, scalability, and service availability under controlled workloads and failure scenarios.
 
@@ -75,7 +113,7 @@ Evaluate application performance, scalability, and service availability under co
 **Expected results:** Verify whether the application meets predefined performance thresholds and demonstrate its ability to recover from service interruptions.
 
 
-## 7. Infrastructure Deployment 
+## 8. Infrastructure Deployment 
 
 ### Prerequisites
 
@@ -91,16 +129,14 @@ Evaluate application performance, scalability, and service availability under co
 ```
 python deploy.py
 ```
+### Destroy infrastructure
 
 ```
 python destroy.py
 ```
 
 
-
-
-
-## 8. References
+## 9. References
 
 - Dignitae. AZ-104T00-A Microsoft Knowledge and Skills with Challenge Labs. Training material<br>
 

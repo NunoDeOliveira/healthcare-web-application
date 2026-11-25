@@ -1,16 +1,12 @@
 using '../workload/main.bicep'
 
-//=================================================================
-// MediCore Health - Workload Parameters
-//=================================================================
-
+// MediCore workload deployment settings
 param resourceGroupLocation = 'spaincentral'
+param rgAppName = 'rg-medicore-app'
+param rgNetworkName = 'rg-medicore-net'
+param rgMonitorName = 'rg-medicore-monitor'
 
-param resourceGroupNames = [
-  'rg-medicore-app'
-  'rg-medicore-net'
-  'rg-medicore-monitor'
-]
+// Set true only once app-service-plan.bicep has been integrated into main.bicep.
 
 param tagResourceGroup = {
   Project: 'p01-web'

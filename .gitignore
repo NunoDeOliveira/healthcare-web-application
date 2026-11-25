@@ -1,0 +1,6 @@
+
+# Generated Bicep files
+infrastructure/**/*.json
+
+# Private parameters
+infrastructure/parameters/foundation.bicepparam
