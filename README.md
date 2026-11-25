@@ -38,38 +38,6 @@ The architecture uses a Virtual Network (VNet) with four separate subnets:
 
 ![MediCore Health structure](./screenshots/structure-of-project.png)
 
-~/projects/healthcare-web-application$ tree -L 3
-.
-├── docs
-│   └── medicore-web.png
-├── infrastructure
-│   ├── foundation
-│   │   ├── budgets.bicep
-│   │   ├── budgets.json
-│   │   ├── identities.bicep
-│   │   ├── locks.bicep
-│   │   ├── main.bicep
-│   │   ├── main.json
-│   │   ├── management-groups.bicep
-│   │   ├── policies.bicep
-│   │   ├── rbac.bicep
-│   │   └── tenant.bicep
-│   ├── parameters
-│   │   ├── foundation.bicepparam
-│   │   └── workload.bicepparam
-│   ├── scripts
-│   │   ├── deploy.py
-│   │   └── destroy.py
-│   └── workload
-│       ├── application
-│       ├── main.bicep
-│       ├── monitoring
-│       └── networking
-├── README.md
-├── screenshots
-│   └── structure-of-project.png
-└── web-app
-
 
 
 ## 5. Security & End-to-End Communication Analysis
