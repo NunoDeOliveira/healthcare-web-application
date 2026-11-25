@@ -1,24 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediCore Health</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
       background: #f4f7fb;
-      text-align: center;
-      padding: 80px 20px;
+      margin: 0;
+      padding: 20px;
+      min-height: 100vh;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
     }
 
-    h1 { color: #1765a3; }
-    p { color: #475569; }
+    /* Cabecera */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      color: #1765a3;
+      font-size: 15px;
+      margin: 0;
+    }
+
+    /* Menú de navegación */
+    nav {
+      display: flex;
+      gap: 25px;
+    }
+
+    nav a {
+      color: #475569;
+      font-size: 10px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #1765a3;
+      text-decoration: underline;
+    }
+
+    /* Contenido principal */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    h2 {
+      color: #1765a3;
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+
+    .especialidades {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .especialidad {
+      background: white;
+      padding: 20px;
+      width: 180px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      color: #475569;
+      font-size: 14px;
+    }
+
+    /* Pie de página */
+    footer {
+      text-align: center;
+      font-size: 10px;
+      color: #475569;
+      padding-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <h1>MediCore Health</h1>
-  <p>Healthcare Management Platform</p>
-  <p>Frontend Service - Azure App Service</p>
+
+  <!-- Cabecera -->
+  <header>
+    <h1>MediCore Health</h1>
+
+    <nav aria-label="Navegación principal">
+      <a href="#citas">Citas</a>
+      <a href="#pacientes">Área de pacientes</a>
+      <a href="#consultas">Consultas</a>
+      <a href="#contactos">Contactos</a>
+    </nav>
+  </header>
+
+  <!-- Especialidades médicas -->
+  <main>
+    <h2>Nuestras especialidades médicas</h2>
+
+    <section class="especialidades" aria-label="Especialidades médicas">
+      <div class="especialidad">Medicina General</div>
+      <div class="especialidad">Cardiología</div>
+      <div class="especialidad">Dermatología</div>
+      <div class="especialidad">Traumatología</div>
+      <div class="especialidad">Pediatría</div>
+    </section>
+  </main>
+
+  <!-- Pie de página -->
+  <footer>
+    Aplicación web ficticia desplegada en Azure
+  </footer>
+
 </body>
 </html>
