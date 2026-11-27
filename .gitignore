@@ -4,3 +4,24 @@ infrastructure/**/*.json
 
 # Private parameters
 infrastructure/parameters/foundation.bicepparam
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# Local databases
+*.db
+
+# Environment variables and secrets
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+
+# Node.js
+node_modules/
+
+# Temporary files
+*.log

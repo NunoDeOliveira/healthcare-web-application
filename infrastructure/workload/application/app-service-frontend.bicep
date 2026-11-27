@@ -132,3 +132,5 @@ resource sites_medicore_frontend_name_web 'Microsoft.Web/sites/config@2024-11-01
     ftpsState: 'FtpsOnly'
   }
 }
+
+output fqdn string = sites_medicore_frontend_name_resource.properties.defaultHostName

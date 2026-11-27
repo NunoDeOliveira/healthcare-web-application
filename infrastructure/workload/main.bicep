@@ -91,6 +91,39 @@ module vnet './networking/vnet.bicep' = {
 }
 
 //=======================================//
+// Networking - Private DNS Zone
+//=======================================//
+
+module privateDns './networking/private-dns-app.bicep' = {
+  name: 'deploy-medicore-private-dns'
+  scope: rgNetwork
+
+  dependsOn: [
+    vnet
+  ]
+}
+
+module privateDnsSql './networking/private-dns-sql.bicep' = {
+  name: 'deploy-medicore-private-dns-sql'
+  scope: rgNetwork
+
+  dependsOn: [
+    vnet
+  ]
+}
+
+
+//=======================================//
+// Networking - Public IP
+//=======================================//
+
+module publicIpAgw './networking/public-ip-agw.bicep' = {
+  name: 'deploy-public-ip-agw'
+  scope: rgNetwork
+}
+
+
+//=======================================//
 // Application - App Service Plan
 //=======================================//
 
@@ -145,19 +178,6 @@ module azureSql './application/azure-sql.bicep' = if (deploySql) {
   }
 }
 
-//=======================================//
-// Networking - Private DNS Zone
-//=======================================//
-
-module privateDns './networking/private-dns.bicep' = {
-  name: 'deploy-medicore-private-dns'
-  scope: rgNetwork
-
-  dependsOn: [
-    vnet
-  ]
-}
-
 
 //===========================================//
 // Networking - Private endpoints
@@ -183,6 +203,17 @@ module peBackend './networking/pe-backend.bicep' = {
   ]
 }
 
+module peDb './networking/pe-db.bicep' = if (deploySql) {
+  name: 'deploy-pe-db'
+  scope: rgNetwork
+
+  dependsOn: [
+    vnet
+    azureSql
+    privateDnsSql
+  ]
+}
+
 
 //=======================================//
 // Networking - Application Gateway
@@ -191,13 +222,20 @@ module peBackend './networking/pe-backend.bicep' = {
 module applicationGateway './networking/app-gw.bicep' = {
   name: 'deploy-application-gateway'
   scope: rgNetwork
+  
+  params: {
+    frontendFqdn: frontend.outputs.fqdn
+    backendFqdn: backend.outputs.fqdn
+  }
 
   dependsOn: [
     vnet
+    publicIpAgw
     peFrontend
     peBackend
   ]
 }
+
 
 
 
