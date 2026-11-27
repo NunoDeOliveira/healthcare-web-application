@@ -9,7 +9,7 @@ param rgMonitorName string = 'rg-medicore-monitor'
 
 // Sql parameter
 @description('Enable Azure SQL deployment')
-param deploySql bool = false
+param deploySql bool = true
 
 @secure()
 @description('Azure SQL administrator password')
@@ -113,6 +113,7 @@ module frontend './application/app-service-frontend.bicep' = {
 
   dependsOn: [
     appServicePlan
+    vnet
   ]
 }
 
@@ -144,10 +145,23 @@ module azureSql './application/azure-sql.bicep' = if (deploySql) {
   }
 }
 
+//=======================================//
+// Networking - Private DNS Zone
+//=======================================//
 
-//=======================================//
+module privateDns './networking/private-dns.bicep' = {
+  name: 'deploy-medicore-private-dns'
+  scope: rgNetwork
+
+  dependsOn: [
+    vnet
+  ]
+}
+
+
+//===========================================//
 // Networking - Private endpoints
-//=======================================//
+//============================================//
 
 module peFrontend './networking/pe-frontend.bicep' = {
   name: 'deploy-pe-frontend'
@@ -155,6 +169,7 @@ module peFrontend './networking/pe-frontend.bicep' = {
   dependsOn: [
     vnet
     frontend
+    privateDns
   ]
 }
 
@@ -164,5 +179,27 @@ module peBackend './networking/pe-backend.bicep' = {
   dependsOn: [
     vnet
     backend
+    privateDns
   ]
 }
+
+
+//=======================================//
+// Networking - Application Gateway
+//=======================================//
+
+module applicationGateway './networking/app-gw.bicep' = {
+  name: 'deploy-application-gateway'
+  scope: rgNetwork
+
+  dependsOn: [
+    vnet
+    peFrontend
+    peBackend
+  ]
+}
+
+
+
+
+

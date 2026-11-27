@@ -135,6 +135,11 @@ https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install
 - Microsoft. Delete Azure resources at scale using a script. Azure CLI<br>
 https://learn.microsoft.com/en-us/cli/azure/get-started-tutorial-4-delete-resources?view=azure-cli-latest&tabs=bash
 
+- venv — Creation of virtual environments:<br>
+https://docs.python.org/3/library/venv.html
+
+
+
 
 
 

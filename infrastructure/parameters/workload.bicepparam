@@ -5,6 +5,8 @@ param resourceGroupLocation = 'spaincentral'
 param rgAppName = 'rg-medicore-app'
 param rgNetworkName = 'rg-medicore-net'
 param rgMonitorName = 'rg-medicore-monitor'
+param deploySql = true
+param sqlAdminPassword = readEnvironmentVariable('MEDICORE_SQL_ADMIN_PASSWORD', '')
 
 // Set true only once app-service-plan.bicep has been integrated into main.bicep.
 
